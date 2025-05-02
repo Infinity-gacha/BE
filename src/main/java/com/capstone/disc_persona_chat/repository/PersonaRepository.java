@@ -1,0 +1,20 @@
+package com.capstone.disc_persona_chat.repository;
+
+import com.capstone.disc_persona_chat.entity.Persona;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PersonaRepository extends JpaRepository<Persona, Long> {
+
+     /**
+     * 이름에 특정 문자열을 포함하는 페르소나 목록을 대소문자 구분 없이 반환환
+     * @param name 검색할 이름의 일부
+     * @return 이름 조건을 만족하는 페르소나 목록
+     */
+    List<Persona> findByNameContainingIgnoreCase(String name);
+}
+
