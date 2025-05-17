@@ -21,15 +21,15 @@ import java.util.List;
 public class OpenAiIntegrationService {
 
     private final OpenAiService openAiService;
-    private final ObjectMapper objectMapper; 
+    private final ObjectMapper objectMapper;
 
     private static final String EMOTION_TAG_START = "[emotion:"; // 감정 태그 시작 문자열
     private static final String EMOTION_TAG_END = "]"; // 감정 태그 종료 문자열
 
     // 사용할 OpenAI 모델
-    private static final String CHAT_MODEL = "gpt-4o-mini"; 
+    private static final String CHAT_MODEL = "gpt-4o-mini";
     // 분석용 모델 
-    private static final String ANALYSIS_MODEL = "gpt-4o"; 
+    private static final String ANALYSIS_MODEL = "gpt-4o";
 
     public OpenAiIntegrationService(@Value("${openai.api.key}") String apiKey) {
         // API 키 제공 확인
@@ -114,7 +114,7 @@ public class OpenAiIntegrationService {
      * @return 분석 결과를 포함하는 DTO
      */
     public ChatSummaryDto.AnalysisResult generateSummaryAndAnalysis(Persona persona, String fullConversationHistory) {
-         if (openAiService == null) {
+        if (openAiService == null) {
             log.error("API 키 누락으로 OpenAI 서비스가 초기화되지 않았습니다.");
             return null;
         }
@@ -123,12 +123,12 @@ public class OpenAiIntegrationService {
             String prompt = buildAnalysisPrompt(persona, fullConversationHistory); // 분석 프롬프트 생성
 
             List<ChatMessage> messages = List.of(
-                    new ChatMessage("system", "당신은 전문 대화 분석가입니다. 사용자의 요청에 따라 제공된 대화를 분석하세요. 사용자 프롬프트에 명시된 분석 필드를 포함하는 유효한 JSON 객체 *만* 응답하세요. 소개 문구, 설명 또는 ```json과 같은 마크다운 서식을 포함하지 마세요."),
+                    new ChatMessage("system", "당신은 전문 대화 분석가입니다. 사용자의 요청에 따라 제공된 대화를 분석하세요. 사용자 프롬프트에 명시된 분석 필드를 포함하는 유효한 JSON 객체 *만* 응답하세요. 소개 문구, 설명 또는 ```json과 같은 마크다운 서식을 포함하지 마세요. 한국어로 요약하세요."),
                     new ChatMessage("user", prompt)
             );
 
             ChatCompletionRequest.ChatCompletionRequestBuilder requestBuilder = ChatCompletionRequest.builder()
-                    .model(ANALYSIS_MODEL) 
+                    .model(ANALYSIS_MODEL)
                     .messages(messages)
                     .maxTokens(500) // 요약 및 분석을 위한 충분한 토큰
                     .temperature(0.3); // 일관성 있는 분석 결과 선호
@@ -164,7 +164,7 @@ public class OpenAiIntegrationService {
         }
     }
 
-    // --- 도우미 메소드 --- 
+    // --- 도우미 메소드 ---
 
     /**
      * 페르소나 정보를 기반으로 시스템 프롬프트를 생성
@@ -216,16 +216,16 @@ public class OpenAiIntegrationService {
      */
     private String buildAnalysisPrompt(Persona persona, String conversation) {
         return String.format(
-            "%s 페르소나(DISC 유형: %s)와의 다음 대화를 분석하세요. 사용자는 대화 기술을 연습하고 있으며, 사회적 상호작용 개선을 목표로 할 수 있습니다. " +
-            "분석 결과를 다음 필드를 포함하는 단일 유효 JSON 객체 *로만* 제공하세요: " +
-            "'summaryText'(문자열: 대화 주제에 대한 간략한 요약, 2-3 문장), " +
-            "'score'(정수: 사용자가 페르소나의 DISC 유형과 얼마나 잘 상호작용하고 대화 흐름을 유지했는지를 반영하는 전체 대화 점수, 1-10점), " +
-            "'corePoints'(문자열: 사용자 대화 스타일의 주요 긍정적 측면 또는 순간을 강조하는 2-3개의 글머리 기호, 줄바꿈 문자 \\n을 포함한 단일 문자열 형식), " +
-            "'improvements'(문자열: 이 DISC 유형과의 상호작용에서 사용자의 개선 영역을 제안하는 2-3개의 구체적인 글머리 기호, 줄바꿈 문자 \\n을 포함한 단일 문자열 형식), " +
-            "'tips'(문자열: 사용자가 향후 이 특정 DISC 유형과 더 잘 대화하기 위한 2-3개의 실행 가능한 팁, 줄바꿈 문자 \\n을 포함한 단일 문자열 형식). " +
-            "분석은 사용자의 수행 능력에 초점을 맞추고 건설적인 피드백을 제공하세요. JSON 객체 외부에는 어떤 텍스트도 포함하지 마세요.\n\n" +
-            "대화:\n%s",
-            persona.getName(), persona.getDiscType(), conversation
+                "%s 페르소나(DISC 유형: %s)와의 다음 대화를 분석하세요. 사용자는 대화 기술을 연습하고 있으며, 사회적 상호작용 개선을 목표로 할 수 있습니다. " +
+                        "분석 결과를 다음 필드를 포함하는 단일 유효 JSON 객체 *로만* 제공하세요: " +
+                        "'summaryText'(문자열: 대화 주제에 대한 간략한 요약, 2-3 문장), " +
+                        "'score'(정수: 사용자가 페르소나의 DISC 유형과 얼마나 잘 상호작용하고 대화 흐름을 유지했는지를 반영하는 전체 대화 점수, 1-10점), " +
+                        "'corePoints'(문자열: 사용자 대화 스타일의 주요 긍정적 측면 또는 순간을 강조하는 2-3개의 글머리 기호, 줄바꿈 문자 \\n을 포함한 단일 문자열 형식), " +
+                        "'improvements'(문자열: 이 DISC 유형과의 상호작용에서 사용자의 개선 영역을 제안하는 2-3개의 구체적인 글머리 기호, 줄바꿈 문자 \\n을 포함한 단일 문자열 형식), " +
+                        "'tips'(문자열: 사용자가 향후 이 특정 DISC 유형과 더 잘 대화하기 위한 2-3개의 실행 가능한 팁, 줄바꿈 문자 \\n을 포함한 단일 문자열 형식). " +
+                        "분석은 사용자의 수행 능력에 초점을 맞추고 건설적인 피드백을 제공하세요. JSON 객체 외부에는 어떤 텍스트도 포함하지 마세요.\n\n" +
+                        "대화:\n%s",
+                persona.getName(), persona.getDiscType(), conversation
         );
     }
 
@@ -272,10 +272,10 @@ public class OpenAiIntegrationService {
             if (tagStartIndex != -1) {
                 // 태그가 실제로 끝에 있는지 확인
                 String potentialTag = trimmedResponse.substring(tagStartIndex);
-                 if (potentialTag.endsWith(EMOTION_TAG_END)) {
+                if (potentialTag.endsWith(EMOTION_TAG_END)) {
                     // 제거하기 전에 태그가 올바르게 시작하는지 확인
                     if (potentialTag.startsWith(EMOTION_TAG_START)) {
-                         return trimmedResponse.substring(0, tagStartIndex).trim(); // 태그 앞부분만 잘라내고 공백 제거
+                        return trimmedResponse.substring(0, tagStartIndex).trim(); // 태그 앞부분만 잘라내고 공백 제거
                     }
                 }
             }
@@ -283,4 +283,3 @@ public class OpenAiIntegrationService {
         return trimmedResponse; // 태그를 찾지 못하거나 형식이 잘못된 경우 원본 공백 제거 문자열 반환
     }
 }
-
