@@ -25,15 +25,21 @@ public class ChatSummaryDto {
         private String tips;            // 대화 팁 
         private LocalDateTime timestamp; // 요약 생성 타임스탬프
 
+        private static String truncateIfNecessary(String value) {
+            if (value == null) return null;
+            return value.length() > 65535 ? value.substring(0, 65535) : value;
+        }
+
         public static Response fromEntity(ChatSummary summary) {
             return Response.builder()
                     .id(summary.getId())
                     .personaId(summary.getPersona().getId())
                     .summaryText(summary.getSummaryText())
                     .score(summary.getScore())
-                    .corePoints(summary.getCorePoints())
-                    .improvements(summary.getImprovements())
-                    .tips(summary.getTips())
+                    //.corePoints(summary.getCorePoints())
+                    .corePoints(truncateIfNecessary(summary.getCorePoints()))
+                    .improvements(truncateIfNecessary(summary.getImprovements()))
+                    .tips(truncateIfNecessary(summary.getTips()))
                     .timestamp(summary.getTimestamp())
                     .build();
         }

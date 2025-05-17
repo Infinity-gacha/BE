@@ -28,7 +28,7 @@ public class ChatMessage {
 
     @Lob // 대용량 텍스트 데이터를 저장하기 위한 어노테이션
     @Column(nullable = false)
-    private String content; // 메시지 내용
+    private String content=""; // 메시지 내용
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

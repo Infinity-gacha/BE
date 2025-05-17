@@ -123,7 +123,7 @@ public class OpenAiIntegrationService {
             String prompt = buildAnalysisPrompt(persona, fullConversationHistory); // 분석 프롬프트 생성
 
             List<ChatMessage> messages = List.of(
-                    new ChatMessage("system", "당신은 전문 대화 분석가입니다. 사용자의 요청에 따라 제공된 대화를 분석하세요. 사용자 프롬프트에 명시된 분석 필드를 포함하는 유효한 JSON 객체 *만* 응답하세요. 소개 문구, 설명 또는 ```json과 같은 마크다운 서식을 포함하지 마세요."),
+                    new ChatMessage("system", "당신은 전문 대화 분석가입니다. 사용자의 요청에 따라 제공된 대화를 분석하세요. 사용자 프롬프트에 명시된 분석 필드를 포함하는 유효한 JSON 객체 *만* 응답하세요. 소개 문구, 설명 또는 ```json과 같은 마크다운 서식을 포함하지 마세요. 한국어로 요약하세요."),
                     new ChatMessage("user", prompt)
             );
 

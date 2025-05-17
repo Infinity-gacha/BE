@@ -31,14 +31,14 @@ public class ChatSummary {
 
     private Integer score; // 대화 점수 
 
-    @Lob
-    private String corePoints; // 핵심 긍정 포인트 
+    @Column(columnDefinition = "LONGTEXT")
+    private String corePoints; // 핵심 긍정 포인트
 
-    @Lob
-    private String improvements; // 개선점 
+    @Column(columnDefinition = "LONGTEXT")
+    private String improvements; // 개선점
 
-    @Lob
-    private String tips; // 대화 팁 
+    @Column(columnDefinition = "LONGTEXT")
+    private String tips; // 대화 팁
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
