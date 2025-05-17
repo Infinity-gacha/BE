@@ -26,9 +26,9 @@ public class ChatMessageDto {
     public static class Response {
         private Long id;                // 메시지 ID
         private Long personaId;         // 관련 페르소나 ID
-        private String content;         // 메시지 내용
+        private String content;       // 메시지 내용
         private SenderType senderType;  // 발신자 유형 (USER 또는 AI)
-        private String emotion;         // AI 응답의 감정 
+        private String emotion;         // AI 응답의 감정
         private LocalDateTime timestamp; // 메시지 타임스탬프
 
         public static Response fromEntity(ChatMessage message) {
@@ -61,4 +61,3 @@ public class ChatMessageDto {
         }
     }
 }
-
