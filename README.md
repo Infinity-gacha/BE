@@ -26,7 +26,7 @@
 ##  💻 개발 환경
  - 개발 언어: JavaScript, Java, SQL, JSON
  - 개발 도구: IntelliJ IDEA, Android Studio, AWS
- - 주요기술: React Native, SpringBoot, MySQL, GPT-4
+ - 주요기술: React, SpringBoot, MySQL, GPT-4
 
 ## 👩🏻‍💻 팀원 별 업무 분담 👨🏻‍💻
  1) 이진석: DB 설계 및 구축, Rest-API 개발
