@@ -2,10 +2,10 @@ package com.capstone.disc_persona_chat.service;
 
 import com.capstone.disc_persona_chat.dto.ChatMessageDto;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
-import com.capstone.disc_persona_chat.entity.ChatMessage;
-import com.capstone.disc_persona_chat.entity.ChatSummary;
-import com.capstone.disc_persona_chat.entity.Persona;
-import com.capstone.disc_persona_chat.entity.SenderType;
+import com.capstone.disc_persona_chat.domain.entity.ChatMessage;
+import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
+import com.capstone.disc_persona_chat.domain.entity.Persona;
+import com.capstone.disc_persona_chat.domain.entity.SenderType;
 import com.capstone.disc_persona_chat.exception.PersonaNotFoundException;
 import com.capstone.disc_persona_chat.repository.ChatMessageRepository;
 import com.capstone.disc_persona_chat.repository.ChatSummaryRepository;

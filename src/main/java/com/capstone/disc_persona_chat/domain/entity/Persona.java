@@ -1,4 +1,4 @@
-package com.capstone.disc_persona_chat.entity;
+package com.capstone.disc_persona_chat.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

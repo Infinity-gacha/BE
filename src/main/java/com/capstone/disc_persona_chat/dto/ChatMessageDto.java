@@ -1,7 +1,7 @@
 package com.capstone.disc_persona_chat.dto;
 
-import com.capstone.disc_persona_chat.entity.ChatMessage;
-import com.capstone.disc_persona_chat.entity.SenderType;
+import com.capstone.disc_persona_chat.domain.entity.ChatMessage;
+import com.capstone.disc_persona_chat.domain.entity.SenderType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

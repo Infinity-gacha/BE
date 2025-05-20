@@ -1,4 +1,4 @@
-package com.capstone.disc_persona_chat.entity;
+package com.capstone.disc_persona_chat.domain.entity;
 
 /**
  * DISC 모델의 네 가지 주요 유형을 나타내는 열거형입니다.

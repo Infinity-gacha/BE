@@ -1,6 +1,6 @@
 package com.capstone.disc_persona_chat.repository;
 
-import com.capstone.disc_persona_chat.entity.Persona;
+import com.capstone.disc_persona_chat.domain.entity.Persona;
 
 import java.util.List;
 

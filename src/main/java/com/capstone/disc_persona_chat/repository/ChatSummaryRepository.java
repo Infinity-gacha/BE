@@ -1,6 +1,6 @@
 package com.capstone.disc_persona_chat.repository;
 
-import com.capstone.disc_persona_chat.entity.ChatSummary;
+import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
