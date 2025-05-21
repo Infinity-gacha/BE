@@ -5,34 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3ea6b56-04b7-4647-b9cd-4df78be22657" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/dto/ChatMessageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/dto/ChatMessageDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/dto/ChatSummaryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/dto/ChatSummaryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/entity/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/entity/ChatMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/entity/ChatSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/entity/ChatSummary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/service/OpenAiIntegrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/service/OpenAiIntegrationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$ContextMessage$ContextMessageBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$ContextMessage$ContextMessageBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$ContextMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$ContextMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Request$RequestBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Request$RequestBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Response$ResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Response$ResponseBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatMessageDto$Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$AnalysisResult$AnalysisResultBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$AnalysisResult$AnalysisResultBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$AnalysisResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$AnalysisResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$Response$ResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$Response$ResponseBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/ChatSummaryDto$Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Request$RequestBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Request$RequestBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Response$ResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Response$ResponseBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/dto/PersonaDto$Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatMessage$ChatMessageBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatMessage$ChatMessageBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatSummary$ChatSummaryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatSummary$ChatSummaryBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/ChatSummary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/Persona$PersonaBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/Persona$PersonaBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/Persona.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/entity/Persona.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/ChatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/ChatService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/OpenAiIntegrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/OpenAiIntegrationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/PersonaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/PersonaService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/Enums/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/apiPayload/ApiResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/apiPayload/code/BaseCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/apiPayload/code/BaseErrorCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/apiPayload/code/ErrorReasonDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/apiPayload/code/ReasonDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/apiPayload/code/status/ErrorStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/apiPayload/code/status/SuccessStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/controller/UserRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/controller/UserViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/converter/UserConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/dto/UserRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/dto/UserResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/13c0338b-8284-4a0c-91e3-c369b3b8828c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/13c0338b-8284-4a0c-91e3-c369b3b8828c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/Enums/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/Enums/Gender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/controller/MemberViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/domain/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/domain/entity/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/Enums/Gender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/Enums/Gender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/config/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/controller/MemberViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/domain/entity/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/domain/entity/Users.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +45,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -54,6 +58,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Hajin99"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Infinity-gacha/BE.git",
+    "accountId": "4c3ab0c0-d41e-4cc7-9d38-e10538559d7e"
+  }
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -96,6 +112,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.capstone.disc_persona_chat.apiPayload.code" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="DiscPersonaChatApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -127,7 +148,8 @@
       <workItem from="1747408888865" duration="23620000" />
       <workItem from="1747495772829" duration="54000" />
       <workItem from="1747495829305" duration="746000" />
-      <workItem from="1747496578693" duration="806000" />
+      <workItem from="1747496578693" duration="2345000" />
+      <workItem from="1747720910278" duration="39053000" />
     </task>
     <servers />
   </component>

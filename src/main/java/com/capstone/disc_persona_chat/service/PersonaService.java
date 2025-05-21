@@ -1,7 +1,7 @@
 package com.capstone.disc_persona_chat.service;
 
 import com.capstone.disc_persona_chat.dto.PersonaDto;
-import com.capstone.disc_persona_chat.entity.Persona;
+import com.capstone.disc_persona_chat.domain.entity.Persona;
 import com.capstone.disc_persona_chat.exception.PersonaNotFoundException;
 import com.capstone.disc_persona_chat.repository.PersonaRepository;
 import lombok.RequiredArgsConstructor;

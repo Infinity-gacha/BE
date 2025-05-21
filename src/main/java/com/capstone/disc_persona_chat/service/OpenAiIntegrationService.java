@@ -2,7 +2,7 @@ package com.capstone.disc_persona_chat.service;
 
 import com.capstone.disc_persona_chat.dto.ChatMessageDto;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
-import com.capstone.disc_persona_chat.entity.Persona;
+import com.capstone.disc_persona_chat.domain.entity.Persona;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatCompletionResult;
@@ -54,7 +54,7 @@ public class OpenAiIntegrationService {
             log.error("API 키 누락으로 OpenAI 서비스가 초기화되지 않았습니다.");
             return ChatMessageDto.Response.builder()
                     .content("AI 서비스를 사용할 수 없습니다. OpenAI API 키를 구성해주세요.")
-                    .senderType(com.capstone.disc_persona_chat.entity.SenderType.AI)
+                    .senderType(com.capstone.disc_persona_chat.domain.entity.SenderType.AI)
                     .emotion("error")
                     .build();
         }
@@ -85,14 +85,14 @@ public class OpenAiIntegrationService {
 
                 return ChatMessageDto.Response.builder()
                         .content(cleanResponse.trim()) // 공백 제거된 응답 내용
-                        .senderType(com.capstone.disc_persona_chat.entity.SenderType.AI)
+                        .senderType(com.capstone.disc_persona_chat.domain.entity.SenderType.AI)
                         .emotion(emotion) // 추출된 감정
                         .build();
             } else {
                 log.error("OpenAI로부터 비어 있거나 유효하지 않은 응답을 받았습니다.");
                 return ChatMessageDto.Response.builder()
                         .content("AI가 응답을 생성하지 못했습니다.")
-                        .senderType(com.capstone.disc_persona_chat.entity.SenderType.AI)
+                        .senderType(com.capstone.disc_persona_chat.domain.entity.SenderType.AI)
                         .emotion("error")
                         .build();
             }
@@ -101,7 +101,7 @@ public class OpenAiIntegrationService {
             log.error("OpenAI Chat Completion API 호출 오류: {}", e.getMessage(), e);
             return ChatMessageDto.Response.builder()
                     .content("AI 서비스에 연결하는 중 오류가 발생했습니다.")
-                    .senderType(com.capstone.disc_persona_chat.entity.SenderType.AI)
+                    .senderType(com.capstone.disc_persona_chat.domain.entity.SenderType.AI)
                     .emotion("error")
                     .build();
         }
