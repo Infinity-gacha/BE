@@ -32,8 +32,8 @@ public class Users extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false)
     private Gender gender;
 
     private String socialType;

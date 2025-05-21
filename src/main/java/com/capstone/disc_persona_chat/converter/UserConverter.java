@@ -17,19 +17,26 @@ public class UserConverter {
                 .build();
     }
 
+    public static UserResponseDTO.LoginResultDTO toLoginResultDTO(Long memberId, String accessToken) {
+        return UserResponseDTO.LoginResultDTO.builder()
+                .userId(memberId)
+                .accessToken(accessToken)
+                .build();
+    }
+
     public static Users toUser(UserRequestDTO.JoinDto request) {
         Gender gender = null;
         Role role = null;
 
         switch (request.getGender()) {
             case 1:
-                gender = Gender.MALE;
+                gender = Gender.Male;
                 break;
             case 2:
-                gender = Gender.FEMALE;
+                gender = Gender.Female;
                 break;
             case 3:
-                gender = Gender.NONE;
+                gender = Gender.None;
         }
 
 //        switch (request.getRole()) {
