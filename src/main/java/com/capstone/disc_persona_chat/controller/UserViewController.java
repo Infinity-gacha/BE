@@ -1,12 +1,12 @@
 package com.capstone.disc_persona_chat.controller;
 
-import com.capstone.disc_persona_chat.dto.MemberRequestDTO;
+import com.capstone.disc_persona_chat.dto.UserRequestDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MemberViewController {
+public class UserViewController {
 
     @GetMapping("/login")
     public String loginPage() {
@@ -15,7 +15,7 @@ public class MemberViewController {
 
     @GetMapping("/signup")
     public String signupPage(Model model) {
-        model.addAttribute("memberJoinDto", new MemberRequestDTO.JoinDto());
+        model.addAttribute("userJoinDto", new UserRequestDTO.JoinDto());
         return "signup";
     }
 
