@@ -4,7 +4,8 @@ import com.capstone.disc_persona_chat.dto.PersonaDto;
 import com.capstone.disc_persona_chat.domain.entity.Persona;
 import com.capstone.disc_persona_chat.exception.PersonaNotFoundException;
 import com.capstone.disc_persona_chat.repository.PersonaRepository;
-import lombok.RequiredArgsConstructor;
+import com.capstone.disc_persona_chat.converter.PersonaConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -14,11 +15,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
-@Transactional(readOnly = true) // 기본적으로 읽기 전용 트랜잭션
+@Transactional(readOnly = true)
 public class PersonaService {
 
     private final PersonaRepository personaRepository;
+    private final PersonaConverter personaConverter;
+
+    @Autowired
+    public PersonaService(
+            PersonaRepository personaRepository,
+            PersonaConverter personaConverter) {
+        this.personaRepository = personaRepository;
+        this.personaConverter = personaConverter;
+    }
 
     /**
      * 새 페르소나를 생성하고 저장
@@ -26,11 +35,23 @@ public class PersonaService {
      * @param request 페르소나 생성 요청 DTO
      * @return 생성된 페르소나 응답 DTO
      */
-    @Transactional // 쓰기 작업
+    @Transactional
     public PersonaDto.Response createPersona(PersonaDto.Request request) {
-        Persona persona = request.toEntity();
+        // 컨트롤러에서 userId를 제공하지 않으므로, 여기서는 사용자 정보 없이 페르소나 생성
+        // 실제 구현에서는 인증된 사용자 정보를 가져오는 로직이 필요할 수 있음
+        
+        // 컨버터를 사용하여 DTO를 엔티티로 변환 (사용자 정보 없이)
+        Persona persona = Persona.builder()
+                .discType(request.getDiscType())
+                .name(request.getName())
+                .age(request.getAge())
+                .gender(request.getGender())
+                .build();
+                
         Persona savedPersona = personaRepository.save(persona);
-        return PersonaDto.Response.fromEntity(savedPersona);
+        
+        // 컨버터를 사용하여 엔티티를 DTO로 변환
+        return personaConverter.toResponseDto(savedPersona);
     }
 
     /**
@@ -41,7 +62,7 @@ public class PersonaService {
     public List<PersonaDto.Response> getAllPersonas() {
         List<Persona> personas = personaRepository.findAll();
         return personas.stream()
-                .map(PersonaDto.Response::fromEntity)
+                .map(personaConverter::toResponseDto)
                 .collect(Collectors.toList());
     }
 
@@ -55,7 +76,7 @@ public class PersonaService {
     public PersonaDto.Response getPersonaById(Long id) {
         Persona persona = personaRepository.findById(id)
                 .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + id));
-        return PersonaDto.Response.fromEntity(persona);
+        return personaConverter.toResponseDto(persona);
     }
 
     /**
@@ -71,7 +92,7 @@ public class PersonaService {
         }
         List<Persona> personas = personaRepository.findByNameContainingIgnoreCase(name);
         return personas.stream()
-                .map(PersonaDto.Response::fromEntity)
+                .map(personaConverter::toResponseDto)
                 .collect(Collectors.toList());
     }
     
@@ -83,20 +104,17 @@ public class PersonaService {
      * @return 업데이트된 페르소나 응답 DTO
      * @throws PersonaNotFoundException 페르소나를 찾을 수 없는 경우
      */
-    @Transactional // 쓰기 작업
+    @Transactional
     public PersonaDto.Response updatePersona(Long id, PersonaDto.Request request) {
         Persona existingPersona = personaRepository.findById(id)
                 .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + id));
 
-        // 요청 DTO의 정보로 기존 페르소나 엔티티 업데이트
-        existingPersona.setDiscType(request.getDiscType());
-        existingPersona.setName(request.getName());
-        existingPersona.setAge(request.getAge());
-        existingPersona.setGender(request.getGender());
-
-
-        Persona updatedPersona = personaRepository.save(existingPersona);
-        return PersonaDto.Response.fromEntity(updatedPersona);
+        // 컨버터를 사용하여 DTO 정보로 엔티티 업데이트
+        Persona updatedPersona = personaConverter.updateEntityFromDto(existingPersona, request);
+        Persona savedPersona = personaRepository.save(updatedPersona);
+        
+        // 컨버터를 사용하여 엔티티를 DTO로 변환
+        return personaConverter.toResponseDto(savedPersona);
     }
 
     /**
@@ -105,7 +123,7 @@ public class PersonaService {
      * @param id 삭제할 페르소나 ID
      * @throws PersonaNotFoundException 페르소나를 찾을 수 없는 경우
      */
-    @Transactional // 쓰기 작업
+    @Transactional
     public void deletePersona(Long id) {
         Persona persona = personaRepository.findById(id)
                 .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + id));
@@ -113,4 +131,3 @@ public class PersonaService {
         personaRepository.delete(persona);
     }
 }
-
