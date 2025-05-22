@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
 @Entity
 @Getter
 @Builder
@@ -38,7 +39,9 @@ public class Users extends BaseEntity {
 
     private String socialType;
 
+
     public void encodePassword(String password) {
         this.password = password;
     }
+
 }

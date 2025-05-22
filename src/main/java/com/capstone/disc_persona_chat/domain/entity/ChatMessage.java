@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-
+import com.capstone.disc_persona_chat.Enums.SenderType;
 import java.time.LocalDateTime;
 
 @Entity
