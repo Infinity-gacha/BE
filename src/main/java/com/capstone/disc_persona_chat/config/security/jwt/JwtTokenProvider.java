@@ -3,25 +3,27 @@ package com.capstone.disc_persona_chat.config.security.jwt;
 import com.capstone.disc_persona_chat.apiPayload.exception.UserHandler;
 import com.capstone.disc_persona_chat.config.properties.Constants;
 import com.capstone.disc_persona_chat.config.properties.JwtProperties;
+import com.capstone.disc_persona_chat.config.security.CustomUserDetails;
+import com.capstone.disc_persona_chat.service.CustomUserDetailsService;
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import com.capstone.disc_persona_chat.apiPayload.code.status.ErrorStatus;
 import java.security.Key;
 import java.util.Date;
-import java.util.Collections;
 
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
+    private final CustomUserDetailsService customUserDetailsService;
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(jwtProperties.getSecretKey().getBytes());
@@ -29,15 +31,22 @@ public class JwtTokenProvider {
 
     public String generateToken(Authentication authentication) {
         String email = authentication.getName();
+        String role = authentication.getAuthorities().iterator().next().getAuthority();
+
+        // ROLE_ 접두어가 없으면 붙여줌
+        if (!role.startsWith("ROLE_")) {
+            role = "ROLE_" + role;
+        }
 
         return Jwts.builder()
-                .setSubject(email)
-                .claim("role", authentication.getAuthorities().iterator().next().getAuthority())
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration().getAccess()))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
-                .compact();
+            .setSubject(email)
+            .claim("role", role)
+            .setIssuedAt(new Date())
+            .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration().getAccess()))
+            .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+            .compact();
     }
+
 
     public boolean validateToken(String token) {
         try {
@@ -59,10 +68,11 @@ public class JwtTokenProvider {
                 .getBody();
 
         String email = claims.getSubject();
-        String role = claims.get("role", String.class);
 
-        User principal = new User(email, "", Collections.singleton(() -> role));
-        return new UsernamePasswordAuthenticationToken(principal, token, principal.getAuthorities());
+        // CustomUserDetails로 로드
+        CustomUserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
+
+        return new UsernamePasswordAuthenticationToken(userDetails, token, userDetails.getAuthorities());
     }
 
     public static String resolveToken(HttpServletRequest request) {
