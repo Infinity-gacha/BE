@@ -5,9 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import com.capstone.disc_persona_chat.Enums.DiscType;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Data 
@@ -31,18 +32,20 @@ public class Persona {
 
     private String gender; // 성별도 선택 사항이므로 nullable
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users user; // 페르소나 소유자
+
     // 페르소나와 채팅 메시지 간의 일대다 관계 설정
-    // mappedBy = "persona": ChatMessage 엔티티의 'persona' 필드가 이 관계의 주인임을 명시
-    // cascade = CascadeType.ALL: 페르소나 관련 작업(저장, 삭제 등)이 ChatMessage에도 전파됨
-    // orphanRemoval = true: 부모(Persona)와의 관계가 끊어진 자식(ChatMessage) 엔티티를 자동으로 삭제
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
     private List<ChatMessage> chatMessages = new ArrayList<>();
 
-    // 페르소나와 채팅 요약 간의 일대다 관계 설정 (위와 유사)
+    // 페르소나와 채팅 요약 간의 일대다 관계 설정
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
     private List<ChatSummary> chatSummaries = new ArrayList<>();
+    
 
     // 페르소나에 채팅 메시지 추가
     public void addChatMessage(ChatMessage message) {
@@ -67,5 +70,5 @@ public class Persona {
         chatSummaries.remove(summary);
         summary.setPersona(null);
     }
+ 
 }
-
