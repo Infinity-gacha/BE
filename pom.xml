@@ -18,6 +18,11 @@
 		<openai-java.version>0.18.2</openai-java.version> <!-- Check for latest version -->
 	</properties>
 	<dependencies>
+	<dependency>
+    	<groupId>com.amazonaws</groupId>
+    	<artifactId>aws-java-sdk-s3</artifactId>
+    	<version>1.12.529</version> 
+	</dependency>
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity6</artifactId>

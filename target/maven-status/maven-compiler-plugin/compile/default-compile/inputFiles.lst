@@ -15,9 +15,11 @@ C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\s
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\converter\ConverterFactory.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\config\SwaggerConfig.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\exception\PersonaNotFoundException.java
+C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\service\S3Service.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\converter\EntityDtoConverter.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\converter\impl\ChatSummaryConverterImpl.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\apiPayload\code\status\SuccessStatus.java
+C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\controller\ImageController.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\controller\PersonaController.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\service\UserService.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\controller\ChatController.java
@@ -32,6 +34,7 @@ C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\c
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\Enums\Role.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\service\ChatService.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\domain\entity\Users.java
+C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\dto\ProfileImageDto.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\service\CustomUserDetailsService.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\config\security\jwt\JwtAuthenticationFilter.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\config\security\SecurityUtils.java
@@ -54,6 +57,7 @@ C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\D
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\domain\common\BaseEntity.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\config\properties\JwtProperties.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\apiPayload\exception\GeneralException.java
+C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\config\S3Config.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\repository\PersonaRepository.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\converter\UserConverter.java
 C:\Users\1004w\Desktop\backend\BE\src\main\java\com\capstone\disc_persona_chat\config\properties\Constants.java
