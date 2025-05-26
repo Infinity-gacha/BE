@@ -93,9 +93,7 @@ public class ChatService {
      * @throws UnauthorizedAccessException 현재 사용자가 해당 페르소나의 소유자가 아닌 경우
      */
     public List<ChatMessageDto.Response> getChatHistoryWithUserCheck(Long personaId, Long userId) {
-        // 페르소나 조회 및 사용자 권한 검증
-        Persona persona = personaRepository.findById(personaId)
-                .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + personaId));
+ 
 
         // 현재 사용자가 페르소나의 소유자인지 확인
         UserPersona userPersona = userPersonaRepository.findByUserIdAndPersonaId(userId, personaId)
@@ -163,9 +161,6 @@ public class ChatService {
      * @throws UnauthorizedAccessException 현재 사용자가 해당 페르소나의 소유자가 아닌 경우
      */
     public ChatSummaryDto.Response getLatestChatSummaryWithUserCheck(Long personaId, Long userId) {
-        // 페르소나 조회 및 사용자 권한 검증
-        Persona persona = personaRepository.findById(personaId)
-                .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + personaId));
         
         // 현재 사용자가 페르소나의 소유자인지 확인
         UserPersona userPersona = userPersonaRepository.findByUserIdAndPersonaId(userId, personaId)
@@ -187,9 +182,6 @@ public class ChatService {
      * @throws UnauthorizedAccessException 현재 사용자가 해당 페르소나의 소유자가 아닌 경우
      */
     public List<ChatSummaryDto.Response> getAllChatSummariesWithUserCheck(Long personaId, Long userId) {
-        // 페르소나 조회 및 사용자 권한 검증
-        Persona persona = personaRepository.findById(personaId)
-                .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + personaId));
 
         // 현재 사용자가 페르소나의 소유자인지 확인
         UserPersona userPersona = userPersonaRepository.findByUserIdAndPersonaId(userId, personaId)

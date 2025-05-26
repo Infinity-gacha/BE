@@ -51,7 +51,6 @@ public class ChatSummaryConverterImpl implements ChatSummaryConverter {
         
         return ChatSummary.builder()
                 .userPersona(userPersona)  // UserPersona 설정
-                .persona(userPersona.getPersona())  // UserPersona에서 Persona를 가져와 설정
                 .summaryText(dto.getSummaryText())
                 .score(dto.getScore())
                 .corePoints(dto.getCorePoints())

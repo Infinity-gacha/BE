@@ -24,13 +24,8 @@ public class ChatSummary {
     @JoinColumn(name = "user_persona_id", nullable = false)
     private UserPersona userPersona;
 
-    // Persona와의 다대일 관계 추가
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "persona_id")
-    private Persona persona;
-
     @Lob
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String summaryText;
 
     private Integer score;
