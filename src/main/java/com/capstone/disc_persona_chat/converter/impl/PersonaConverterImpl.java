@@ -26,7 +26,7 @@ public class PersonaConverterImpl implements PersonaConverter {
         return PersonaDto.Response.builder()
                 .id(entity.getId())
                 .discType(entity.getDiscType())
-                .userid(entity.getUser().getId())
+                //.userid(entity.getUser().getId())
                 .name(entity.getName())
                 .age(entity.getAge())
                 .gender(entity.getGender())
@@ -50,7 +50,7 @@ public class PersonaConverterImpl implements PersonaConverter {
                 .name(dto.getName())
                 .age(dto.getAge())
                 .gender(dto.getGender())
-                .user(user)
+                //.user(user)
                 .build();
     }
     

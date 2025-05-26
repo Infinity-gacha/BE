@@ -13,7 +13,7 @@ public interface ChatMessageConverter {
      * @param entity ChatMessage 엔티티
      * @return 변환된 ChatMessageDto.Response
      */
-    ChatMessageDto.Response toResponseDto(ChatMessage entity);
+    ChatMessageDto.Response toResponseDto(ChatMessage entity, Long personaId);
     
     /**
      * ChatMessage 엔티티를 ChatMessageDto.ContextMessage로 변환

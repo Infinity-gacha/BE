@@ -1,16 +1,15 @@
 package com.capstone.disc_persona_chat.domain.entity;
 
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,27 +19,27 @@ public class ChatSummary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 요약이 속한 페르소나와의 다대일 관계
+    // UserPersona와의 다대일 관계
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "persona_id", nullable = false)
-    private Persona persona;
+    @JoinColumn(name = "user_persona_id", nullable = false)
+    private UserPersona userPersona;
 
     @Lob
     @Column(nullable = false)
-    private String summaryText; // 대화 요약 텍스트
+    private String summaryText;
 
-    private Integer score; // 대화 점수 
-
-    @Column(columnDefinition = "LONGTEXT")
-    private String corePoints; // 핵심 긍정 포인트
+    private Integer score;
 
     @Column(columnDefinition = "LONGTEXT")
-    private String improvements; // 개선점
+    private String corePoints;
 
     @Column(columnDefinition = "LONGTEXT")
-    private String tips; // 대화 팁
+    private String improvements;
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String tips;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
-    private LocalDateTime timestamp; // 요약 생성 타임스탬프
+    private LocalDateTime timestamp;
 }

@@ -9,10 +9,15 @@ import java.util.List;
 @Repository
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
 
-    // 특정 페르소나 ID에 대한 모든 채팅 메시지를 타임스탬프 오름차순으로 반환환
-    List<ChatMessage> findByPersonaIdOrderByTimestampAsc(Long personaId);
+    // 특정 UserPersona ID에 대한 모든 채팅 메시지를 타임스탬프 오름차순으로 반환
+    List<ChatMessage> findByUserPersonaIdOrderByTimestampAsc(Long userPersonaId);
+    
+    // 특정 Persona ID와 연관된 모든 채팅 메시지를 타임스탬프 오름차순으로 반환
+    List<ChatMessage> findByUserPersona_Persona_IdOrderByTimestampAsc(Long personaId);
 
-    // 특정 페르소나 ID에 대한 채팅 메시지 수를 계산
-    long countByPersonaId(Long personaId);
+    // 특정 UserPersona ID에 대한 채팅 메시지 수를 계산
+    long countByUserPersonaId(Long userPersonaId);
+    
+    // 특정 Persona ID와 연관된 채팅 메시지 수를 계산
+    long countByUserPersona_Persona_Id(Long personaId);
 }
-

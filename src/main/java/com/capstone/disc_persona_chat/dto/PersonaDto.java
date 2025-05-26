@@ -17,7 +17,6 @@ public class PersonaDto {
         private String name;       // 페르소나의 이름
         private Integer age;       // 페르소나의 나이 (선택 사항)
         private String gender;     // 페르소나의 성별 (선택 사항)
-
   
     }
 
@@ -28,7 +27,6 @@ public class PersonaDto {
     public static class Response {
         private Long id;           // 페르소나의 고유 ID
         private DiscType discType; // 페르소나의 DISC 유형
-        private Long userid;       // 사용자ID
         private String name;       // 페르소나의 이름
         private Integer age;       // 페르소나의 나이
         private String gender;     // 페르소나의 성별

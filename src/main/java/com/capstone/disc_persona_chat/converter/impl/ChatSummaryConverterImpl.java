@@ -3,6 +3,7 @@ package com.capstone.disc_persona_chat.converter.impl;
 import com.capstone.disc_persona_chat.converter.ChatSummaryConverter;
 import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
 import com.capstone.disc_persona_chat.domain.entity.Persona;
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
 import org.springframework.stereotype.Component;
 
@@ -20,14 +21,14 @@ public class ChatSummaryConverterImpl implements ChatSummaryConverter {
      * @return 변환된 ChatSummaryDto.Response
      */
     @Override
-    public ChatSummaryDto.Response toResponseDto(ChatSummary entity) {
+    public ChatSummaryDto.Response toResponseDto(ChatSummary entity, Long personaId) {
         if (entity == null) {
             return null;
         }
         
         return ChatSummaryDto.Response.builder()
                 .id(entity.getId())
-                .personaId(entity.getPersona().getId())
+                .personaId(personaId)
                 .summaryText(entity.getSummaryText())
                 .score(entity.getScore())
                 .corePoints(truncateIfNecessary(entity.getCorePoints(), 65535))
@@ -40,17 +41,16 @@ public class ChatSummaryConverterImpl implements ChatSummaryConverter {
     /**
      * ChatSummaryDto.AnalysisResult를 ChatSummary 엔티티로 변환
      * @param dto ChatSummaryDto.AnalysisResult
-     * @param persona 요약이 속한 페르소나 (Persona 엔티티)
      * @return 변환된 ChatSummary 엔티티
      */
     @Override
-    public ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto, Persona persona) {
+    public ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto, UserPersona userPersona) {
         if (dto == null) {
             return null;
         }
         
         return ChatSummary.builder()
-                .persona(persona)
+                .userPersona(userPersona)  // UserPersona 설정
                 .summaryText(dto.getSummaryText())
                 .score(dto.getScore())
                 .corePoints(dto.getCorePoints())
