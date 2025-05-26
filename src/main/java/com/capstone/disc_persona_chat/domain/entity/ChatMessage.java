@@ -8,8 +8,8 @@ import com.capstone.disc_persona_chat.Enums.SenderType;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @Setter
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +26,7 @@ public class ChatMessage {
     private UserPersona userPersona;
 
     @Lob // 대용량 텍스트 데이터를 저장하기 위한 어노테이션
-    @Column(nullable = false,columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content; // 메시지 내용
 
     @Enumerated(EnumType.STRING)
