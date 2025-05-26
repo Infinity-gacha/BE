@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a3ea6b56-04b7-4647-b9cd-4df78be22657" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/converter/ChatSummaryConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/converter/ChatSummaryConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/converter/impl/ChatSummaryConverterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/converter/impl/ChatSummaryConverterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/service/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/service/ChatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/converter/ChatSummaryConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/converter/ChatSummaryConverter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/converter/impl/ChatSummaryConverterImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/converter/impl/ChatSummaryConverterImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/ChatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/capstone/disc_persona_chat/service/ChatService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +71,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.DiscPersonaChatApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hajin&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/gimhajin/Desktop/Spring/BE&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,

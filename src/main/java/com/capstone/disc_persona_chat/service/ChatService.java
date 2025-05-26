@@ -145,7 +145,7 @@ public class ChatService {
 
         if (analysisResult != null) {
             // 요약 저장 및 변환
-            ChatSummary summary = chatSummaryConverter.toEntity(analysisResult);
+            ChatSummary summary = chatSummaryConverter.toEntity(analysisResult, userPersona);
             ChatSummary savedSummary = chatSummaryRepository.save(summary);
             userPersona.addChatSummary(savedSummary);
             return chatSummaryConverter.toResponseDto(savedSummary, personaId);

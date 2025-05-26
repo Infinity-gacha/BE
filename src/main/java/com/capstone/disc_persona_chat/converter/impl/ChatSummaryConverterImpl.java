@@ -2,7 +2,7 @@ package com.capstone.disc_persona_chat.converter.impl;
 
 import com.capstone.disc_persona_chat.converter.ChatSummaryConverter;
 import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
-import com.capstone.disc_persona_chat.domain.entity.Persona;
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
 import org.springframework.stereotype.Component;
 
@@ -43,13 +43,13 @@ public class ChatSummaryConverterImpl implements ChatSummaryConverter {
      * @return 변환된 ChatSummary 엔티티
      */
     @Override
-    public ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto) {
+    public ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto, UserPersona userPersona) {
         if (dto == null) {
             return null;
         }
         
         return ChatSummary.builder()
-                //.persona(persona)
+                .userPersona(userPersona)
                 .summaryText(dto.getSummaryText())
                 .score(dto.getScore())
                 .corePoints(dto.getCorePoints())
