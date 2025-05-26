@@ -41,7 +41,7 @@ public class ChatService {
     /**
      * 사용자 메시지를 처리하고 AI 응답을 생성하여 저장 (사용자 권한 검증 포함)
      *
-     * @param userPersonaId 유저 페르소나 ID
+     * @param personaId 페르소나 ID
      * @param request 사용자 메시지 요청 DTO
      * @param userId 현재 로그인한 사용자 ID
      * @return AI 응답 DTO
@@ -49,21 +49,20 @@ public class ChatService {
      * @throws UnauthorizedAccessException 현재 사용자가 해당 페르소나의 소유자가 아닌 경우
      */
     @Transactional
-    public ChatMessageDto.Response processMessageWithUserCheck(Long userPersonaId, ChatMessageDto.Request request, Long userId) {
+    public ChatMessageDto.Response processMessageWithUserCheck(Long personaId, ChatMessageDto.Request request, Long userId) {
         // 1. 페르소나 조회 및 사용자 권한 검증
-        UserPersona userPersona = userPersonaRepository.findByUserIdAndPersonaId(userId, userPersonaId)
+        UserPersona userPersona = userPersonaRepository.findByUserIdAndPersonaId(userId, personaId)
                 .orElseThrow(() -> new UnauthorizedAccessException("User does not have access to this persona"));
 
         Persona persona = userPersona.getPersona();
 
         // 2. 사용자 메시지 저장
-        ChatMessage userMessage = chatMessageConverter.toEntity(request, userPersonaId, SenderType.USER);
+        ChatMessage userMessage = chatMessageConverter.toEntity(request, personaId, SenderType.USER);
         userPersona.addChatMessage(userMessage); // 사용자 메시지를 유저 페르소나의 ChatMessage 리스트에 추가
-        userMessage.setUserPersona(userPersona); // 유저 메세지에 유저 페르소나 등록
         chatMessageRepository.save(userMessage); // 유저 메세지 데베에 추가
 
         // 3. OpenAI에 보낼 대화 기록 준비
-        List<ChatMessage> historyEntities = chatMessageRepository.findByUserPersona_IdOrderByTimestampAsc(userPersonaId);
+        List<ChatMessage> historyEntities = chatMessageRepository.findByUserPersonaIdOrderByTimestampAsc(userPersona.getId());
         List<ChatMessageDto.ContextMessage> historyContext = historyEntities.stream()
                 .map(chatMessageConverter::toContextMessageDto)
                 .collect(Collectors.toList());
@@ -81,7 +80,7 @@ public class ChatService {
         ChatMessage savedAiMessage = chatMessageRepository.save(aiMessage);
 
         // 6. AI 응답 DTO 반환
-        return chatMessageConverter.toResponseDto(savedAiMessage, userPersonaId);
+        return chatMessageConverter.toResponseDto(savedAiMessage, personaId);
     }
 
     /**
@@ -103,7 +102,7 @@ public class ChatService {
                 .orElseThrow(() -> new UnauthorizedAccessException("User does not have access to this persona"));
 
         // 채팅 기록 조회 및 변환
-        List<ChatMessage> historyEntities = chatMessageRepository.findByUserPersona_IdOrderByTimestampAsc(userPersona.getId());
+        List<ChatMessage> historyEntities = chatMessageRepository.findByUserPersonaIdOrderByTimestampAsc(userPersona.getId());
         return historyEntities.stream()
                 .map(chatMessage -> chatMessageConverter.toResponseDto(chatMessage, personaId))
                 .collect(Collectors.toList());
@@ -128,7 +127,7 @@ public class ChatService {
         UserPersona userPersona = userPersonaRepository.findByUserIdAndPersonaId(userId, personaId)
                 .orElseThrow(() -> new UnauthorizedAccessException("User does not have access to this persona"));
 
-        List<ChatMessage> historyEntities = chatMessageRepository.findByUserPersona_IdOrderByTimestampAsc(userPersona.getId());
+        List<ChatMessage> historyEntities = chatMessageRepository.findByUserPersonaIdOrderByTimestampAsc(userPersona.getId());
 
         if (historyEntities.isEmpty()) {
             log.info("No chat history found for persona {}, cannot generate summary.", personaId);
@@ -144,10 +143,9 @@ public class ChatService {
         ChatSummaryDto.AnalysisResult analysisResult = openAiIntegrationService.generateSummaryAndAnalysis(persona, conversationText);
 
         if (analysisResult != null) {
-            // 요약 저장 및 변환
-            ChatSummary summary = chatSummaryConverter.toEntity(analysisResult);
+            // 요약 저장 및 변환 - UserPersona 파라미터 추가
+            ChatSummary summary = chatSummaryConverter.toEntity(analysisResult, userPersona);
             ChatSummary savedSummary = chatSummaryRepository.save(summary);
-            userPersona.addChatSummary(savedSummary);
             return chatSummaryConverter.toResponseDto(savedSummary, personaId);
         } else {
             log.error("Failed to generate summary for persona {}", personaId);
@@ -173,9 +171,8 @@ public class ChatService {
         UserPersona userPersona = userPersonaRepository.findByUserIdAndPersonaId(userId, personaId)
                 .orElseThrow(() -> new UnauthorizedAccessException("User does not have access to this persona"));
 
-
         // 최신 요약 조회 및 변환
-        return chatSummaryRepository.findByUserPersona_IdOrderByTimestampAsc(userPersona.getId())
+        return chatSummaryRepository.findFirstByUserPersonaIdOrderByTimestampDesc(userPersona.getId())
                 .map(summary -> chatSummaryConverter.toResponseDto(summary, personaId))
                 .orElse(null);
     }
@@ -199,7 +196,7 @@ public class ChatService {
                 .orElseThrow(() -> new UnauthorizedAccessException("User does not have access to this persona"));
         
         // 모든 요약 조회 및 변환
-        List<ChatSummary> summaries = chatSummaryRepository.findByUserPersona_Persona_IdOrderByTimestampDesc(userPersona.getId());
+        List<ChatSummary> summaries = chatSummaryRepository.findByUserPersonaIdOrderByTimestampDesc(userPersona.getId());
         return summaries.stream()
                 .map(chatSummaries -> chatSummaryConverter.toResponseDto(chatSummaries, personaId))
                 .collect(Collectors.toList());

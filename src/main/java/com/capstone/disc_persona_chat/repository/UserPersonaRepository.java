@@ -9,6 +9,18 @@ import java.util.Optional;
 
 @Repository
 public interface UserPersonaRepository extends JpaRepository<UserPersona, Long> {
+    // 사용자 ID와 페르소나 ID로 UserPersona 찾기
     Optional<UserPersona> findByUserIdAndPersonaId(Long userId, Long personaId);
+    
+    // 사용자 ID로 모든 UserPersona 찾기
     List<UserPersona> findByUserId(Long userId);
+    
+    // 페르소나 ID로 모든 UserPersona 찾기
+    List<UserPersona> findByPersonaId(Long personaId);
+    
+    // 사용자 ID로 UserPersona 존재 여부 확인
+    boolean existsByUserId(Long userId);
+    
+    // 페르소나 ID로 UserPersona 존재 여부 확인
+    boolean existsByPersonaId(Long personaId);
 }

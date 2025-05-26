@@ -2,6 +2,7 @@ package com.capstone.disc_persona_chat.converter;
 
 import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
 import com.capstone.disc_persona_chat.domain.entity.Persona;
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
 
 /**
@@ -21,7 +22,7 @@ public interface ChatSummaryConverter {
      * @param dto ChatSummaryDto.AnalysisResult
      * @return 변환된 ChatSummary 엔티티
      */
-    ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto);
+    ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto, UserPersona userPersona);
     
     /**
      * 긴 텍스트 필드를 필요에 따라 잘라내는 유틸리티 메서드
