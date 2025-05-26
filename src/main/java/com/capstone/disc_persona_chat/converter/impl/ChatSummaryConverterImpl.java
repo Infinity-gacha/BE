@@ -20,14 +20,14 @@ public class ChatSummaryConverterImpl implements ChatSummaryConverter {
      * @return 변환된 ChatSummaryDto.Response
      */
     @Override
-    public ChatSummaryDto.Response toResponseDto(ChatSummary entity) {
+    public ChatSummaryDto.Response toResponseDto(ChatSummary entity, Long personaId) {
         if (entity == null) {
             return null;
         }
         
         return ChatSummaryDto.Response.builder()
                 .id(entity.getId())
-                .personaId(entity.getPersona().getId())
+                .personaId(personaId)
                 .summaryText(entity.getSummaryText())
                 .score(entity.getScore())
                 .corePoints(truncateIfNecessary(entity.getCorePoints(), 65535))
@@ -40,17 +40,16 @@ public class ChatSummaryConverterImpl implements ChatSummaryConverter {
     /**
      * ChatSummaryDto.AnalysisResult를 ChatSummary 엔티티로 변환
      * @param dto ChatSummaryDto.AnalysisResult
-     * @param persona 요약이 속한 페르소나 (Persona 엔티티)
      * @return 변환된 ChatSummary 엔티티
      */
     @Override
-    public ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto, Persona persona) {
+    public ChatSummary toEntity(ChatSummaryDto.AnalysisResult dto) {
         if (dto == null) {
             return null;
         }
         
         return ChatSummary.builder()
-                .persona(persona)
+                //.persona(persona)
                 .summaryText(dto.getSummaryText())
                 .score(dto.getScore())
                 .corePoints(dto.getCorePoints())

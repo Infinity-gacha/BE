@@ -1,5 +1,6 @@
 package com.capstone.disc_persona_chat.domain.entity;
 
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,43 +33,14 @@ public class Persona {
 
     private String gender; // 성별도 선택 사항이므로 nullable
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users user; // 페르소나 소유자
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private Users user; // 페르소나 소유자
 
-    // 페르소나와 채팅 메시지 간의 일대다 관계 설정
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    // 페르소나와 유저 페르소나 간의 일대다 관계 설정
+    @OneToMany(mappedBy = "persona")
     @Builder.Default
-    private List<ChatMessage> chatMessages = new ArrayList<>();
+    private List<UserPersona> userPersonas = new ArrayList<>();
 
-    // 페르소나와 채팅 요약 간의 일대다 관계 설정
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @Builder.Default
-    private List<ChatSummary> chatSummaries = new ArrayList<>();
-    
-
-    // 페르소나에 채팅 메시지 추가
-    public void addChatMessage(ChatMessage message) {
-        chatMessages.add(message);
-        message.setPersona(this);
-    }
-
-    // 페르소나에서 채팅 메시지 제거
-    public void removeChatMessage(ChatMessage message) {
-        chatMessages.remove(message);
-        message.setPersona(null);
-    }
-
-    // 페르소나에 채팅 요약 추가
-    public void addChatSummary(ChatSummary summary) {
-        chatSummaries.add(summary);
-        summary.setPersona(this);
-    }
-
-    // 페르소나에서 채팅 요약 제거
-    public void removeChatSummary(ChatSummary summary) {
-        chatSummaries.remove(summary);
-        summary.setPersona(null);
-    }
  
 }

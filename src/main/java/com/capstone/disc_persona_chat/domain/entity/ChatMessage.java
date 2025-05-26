@@ -1,15 +1,14 @@
 package com.capstone.disc_persona_chat.domain.entity;
 
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import com.capstone.disc_persona_chat.Enums.SenderType;
 import java.time.LocalDateTime;
 
 @Entity
+@Setter
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,11 +19,11 @@ public class ChatMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 메시지가 속한 페르소나와의 다대일 관계
+    // 메시지가 속한 유저 페르소나와의 다대일 관계
     // FetchType.LAZY: 연관된 페르소나 엔티티를 필요할 때만 로드
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "persona_id", nullable = false) // 외래 키 컬럼 설정
-    private Persona persona;
+    @JoinColumn(name = "user_persona_id", nullable = false)
+    private UserPersona userPersona;
 
     @Lob // 대용량 텍스트 데이터를 저장하기 위한 어노테이션
     @Column(nullable = false,columnDefinition = "TEXT")

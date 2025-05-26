@@ -1,5 +1,6 @@
 package com.capstone.disc_persona_chat.converter;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,24 +9,13 @@ import org.springframework.stereotype.Component;
  * 모든 컨버터 인스턴스에 대한 중앙 접근점을 제공합니다.
  */
 @Component
+@RequiredArgsConstructor
 public class ConverterFactory {
 
     private final ChatMessageConverter chatMessageConverter;
     private final UserConverter userConverter;
     private final PersonaConverter personaConverter;
     private final ChatSummaryConverter chatSummaryConverter;
-
-    @Autowired
-    public ConverterFactory(
-            ChatMessageConverter chatMessageConverter,
-            UserConverter userConverter,
-            PersonaConverter personaConverter,
-            ChatSummaryConverter chatSummaryConverter) {
-        this.chatMessageConverter = chatMessageConverter;
-        this.userConverter = userConverter;
-        this.personaConverter = personaConverter;
-        this.chatSummaryConverter = chatSummaryConverter;
-    }
 
     /**
      * ChatMessage 컨버터 인스턴스 반환

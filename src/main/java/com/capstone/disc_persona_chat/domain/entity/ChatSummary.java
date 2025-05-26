@@ -1,15 +1,14 @@
 package com.capstone.disc_persona_chat.domain.entity;
 
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Setter
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,8 +21,8 @@ public class ChatSummary {
 
     // 요약이 속한 페르소나와의 다대일 관계
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "persona_id", nullable = false)
-    private Persona persona;
+    @JoinColumn(name = "user_persona_id", nullable = false)
+    private UserPersona userPersona;
 
     @Lob
     @Column(nullable = false)

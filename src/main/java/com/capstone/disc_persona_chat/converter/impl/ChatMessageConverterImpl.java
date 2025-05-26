@@ -18,14 +18,14 @@ public class ChatMessageConverterImpl implements ChatMessageConverter {
      * @return 변환된 ChatMessageDto.Response
      */
     @Override
-    public ChatMessageDto.Response toResponseDto(ChatMessage entity) {
+    public ChatMessageDto.Response toResponseDto(ChatMessage entity, Long personaId) {
         if (entity == null) {
             return null;
         }
         
         return ChatMessageDto.Response.builder()
                 .id(entity.getId())
-                .personaId(entity.getPersona().getId())
+                .personaId(personaId)
                 .content(entity.getContent())
                 .senderType(entity.getSenderType())
                 .emotion(entity.getEmotion())
@@ -60,6 +60,7 @@ public class ChatMessageConverterImpl implements ChatMessageConverter {
      */
     @Override
     public ChatMessage toEntity(ChatMessageDto.Request dto, Long personaId, SenderType senderType) {
+
         if (dto == null) {
             return null;
         }

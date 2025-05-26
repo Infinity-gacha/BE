@@ -18,9 +18,9 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
     List<Persona> findByNameContainingIgnoreCase(String name);
 
     // 사용자 ID로 페르소나 목록 조회
-    List<Persona> findByUserId(Long userId);
+    //List<Persona> findByUserId(Long userId);
     
     // 이름과 사용자 ID로 페르소나 검색 (대소문자 구분 없음)
-    List<Persona> findByNameContainingIgnoreCaseAndUserId(String name, Long userId);
+    //List<Persona> findByNameContainingIgnoreCaseAndUserId(String name, Long userId);
 }
 

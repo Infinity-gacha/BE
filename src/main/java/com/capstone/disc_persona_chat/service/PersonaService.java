@@ -1,5 +1,6 @@
 package com.capstone.disc_persona_chat.service;
 
+import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import com.capstone.disc_persona_chat.dto.PersonaDto;
 import com.capstone.disc_persona_chat.domain.entity.Persona;
 import com.capstone.disc_persona_chat.domain.entity.Users;
@@ -7,8 +8,10 @@ import com.capstone.disc_persona_chat.exception.PersonaNotFoundException;
 import com.capstone.disc_persona_chat.exception.UnauthorizedAccessException;
 import com.capstone.disc_persona_chat.exception.UserNotFoundException;
 import com.capstone.disc_persona_chat.repository.PersonaRepository;
+import com.capstone.disc_persona_chat.repository.UserPersonaRepository;
 import com.capstone.disc_persona_chat.repository.UserRepository;
 import com.capstone.disc_persona_chat.converter.PersonaConverter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,21 +23,13 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class PersonaService {
 
     private final PersonaRepository personaRepository;
     private final UserRepository userRepository;
     private final PersonaConverter personaConverter;
-
-    @Autowired
-    public PersonaService(
-            PersonaRepository personaRepository,
-            UserRepository userRepository,
-            PersonaConverter personaConverter) {
-        this.personaRepository = personaRepository;
-        this.userRepository = userRepository;
-        this.personaConverter = personaConverter;
-    }
+    private final UserPersonaRepository userPersonaRepository;
 
     /**
      * 현재 로그인한 사용자를 위한 새 페르소나를 생성하고 저장
@@ -52,15 +47,20 @@ public class PersonaService {
         
         // 페르소나 생성 및 사용자 연결
         Persona persona = Persona.builder()
-                .user(user)
                 .discType(request.getDiscType())
                 .name(request.getName())
                 .age(request.getAge())
                 .gender(request.getGender())
                 .build();
-                
+
         Persona savedPersona = personaRepository.save(persona);
-        
+        // 사용자 연결
+        // userId와 personaId를 연결하는 UserPersona 저장
+        UserPersona userPersona = UserPersona.builder()
+                .user(user)
+                .persona(savedPersona)
+                .build();
+        userPersonaRepository.save(userPersona);
         // 컨버터를 사용하여 엔티티를 DTO로 변환
         return personaConverter.toResponseDto(savedPersona);
     }
@@ -72,8 +72,10 @@ public class PersonaService {
      * @return 페르소나 응답 DTO 목록
      */
     public List<PersonaDto.Response> getAllPersonasByUserId(Long userId) {
-        List<Persona> personas = personaRepository.findByUserId(userId);
-        return personas.stream()
+        List<UserPersona> userPersonas = userPersonaRepository.findByUserId(userId);
+
+        return userPersonas.stream()
+                .map(UserPersona::getPersona)
                 .map(personaConverter::toResponseDto)
                 .collect(Collectors.toList());
     }
@@ -92,7 +94,9 @@ public class PersonaService {
                 .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + id));
         
         // 현재 사용자가 페르소나의 소유자인지 확인
-        if (!persona.getUser().getId().equals(userId)) {
+        boolean hasAccess = userPersonaRepository.findByUserIdAndPersonaId(userId, id).isPresent();
+
+        if (!hasAccess) {
             throw new UnauthorizedAccessException("User does not have access to this persona");
         }
         
@@ -107,12 +111,14 @@ public class PersonaService {
      * @return 검색된 페르소나 응답 DTO 목록
      */
     public List<PersonaDto.Response> searchPersonasByNameAndUserId(String name, Long userId) {
-        // 검색어가 비어있거나 null이면 빈 목록 반환
         if (!StringUtils.hasText(name)) {
             return Collections.emptyList();
         }
-        List<Persona> personas = personaRepository.findByNameContainingIgnoreCaseAndUserId(name, userId);
-        return personas.stream()
+
+        List<UserPersona> userPersonas = userPersonaRepository.findByUserId(userId);
+        return userPersonas.stream()
+                .map(UserPersona::getPersona)
+                .filter(p -> p.getName() != null && p.getName().toLowerCase().contains(name.toLowerCase()))
                 .map(personaConverter::toResponseDto)
                 .collect(Collectors.toList());
     }
@@ -133,7 +139,9 @@ public class PersonaService {
                 .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + id));
 
         // 현재 사용자가 페르소나의 소유자인지 확인
-        if (!existingPersona.getUser().getId().equals(userId)) {
+        boolean hasAccess = userPersonaRepository.findByUserIdAndPersonaId(userId, id).isPresent();
+
+        if (!hasAccess) {
             throw new UnauthorizedAccessException("User does not have access to this persona");
         }
 
@@ -159,7 +167,9 @@ public class PersonaService {
                 .orElseThrow(() -> new PersonaNotFoundException("Persona not found with id: " + id));
         
         // 현재 사용자가 페르소나의 소유자인지 확인
-        if (!persona.getUser().getId().equals(userId)) {
+        boolean hasAccess = userPersonaRepository.findByUserIdAndPersonaId(userId, id).isPresent();
+
+        if (!hasAccess) {
             throw new UnauthorizedAccessException("User does not have access to this persona");
         }
         

@@ -4,22 +4,19 @@ import com.capstone.disc_persona_chat.config.security.SecurityUtils;
 import com.capstone.disc_persona_chat.dto.ChatMessageDto;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
 import com.capstone.disc_persona_chat.service.ChatService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/personas/{personaId}") // 페르소나별 작업의 기본 경로
 public class ChatController {
 
     private final ChatService chatService;
-
-    @Autowired
-    public ChatController(ChatService chatService) {
-        this.chatService = chatService;
-    }
 
     /**
      * POST /api/personas/{personaId}/chat : 사용자 메시지를 보내고 AI 응답을 받기
