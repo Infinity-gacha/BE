@@ -25,7 +25,7 @@ public class ChatSummary {
     private UserPersona userPersona;
 
     @Lob
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String summaryText;
 
     private Integer score;

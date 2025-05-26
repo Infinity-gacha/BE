@@ -12,7 +12,6 @@ import com.capstone.disc_persona_chat.repository.UserPersonaRepository;
 import com.capstone.disc_persona_chat.repository.UserRepository;
 import com.capstone.disc_persona_chat.converter.PersonaConverter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -51,9 +50,11 @@ public class PersonaService {
                 .name(request.getName())
                 .age(request.getAge())
                 .gender(request.getGender())
+                .user(user) // 중요: user 필드 명시적으로 설정
                 .build();
 
         Persona savedPersona = personaRepository.save(persona);
+        
         // 사용자 연결
         // userId와 personaId를 연결하는 UserPersona 저장
         UserPersona userPersona = UserPersona.builder()
@@ -61,6 +62,7 @@ public class PersonaService {
                 .persona(savedPersona)
                 .build();
         userPersonaRepository.save(userPersona);
+        
         // 컨버터를 사용하여 엔티티를 DTO로 변환
         return personaConverter.toResponseDto(savedPersona);
     }

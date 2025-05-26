@@ -21,6 +21,7 @@ public class ChatSummaryDto {
         private String improvements;    // 개선점 
         private String tips;            // 대화 팁 
         private LocalDateTime timestamp; // 요약 생성 타임스탬프
+
     }
 
     // OpenAI 분석 응답을 직접 매핑하기 위한 내부 클래스

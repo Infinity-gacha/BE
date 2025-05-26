@@ -33,14 +33,12 @@ public class Persona {
 
     private String gender; // 성별도 선택 사항이므로 nullable
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private Users user; // 페르소나 소유자
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users user; // 페르소나 소유자 - 주석 해제하여 활성화
 
     // 페르소나와 유저 페르소나 간의 일대다 관계 설정
     @OneToMany(mappedBy = "persona")
     @Builder.Default
     private List<UserPersona> userPersonas = new ArrayList<>();
-
- 
 }

@@ -2,7 +2,6 @@ package com.capstone.disc_persona_chat.converter.impl;
 
 import com.capstone.disc_persona_chat.converter.ChatSummaryConverter;
 import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
-import com.capstone.disc_persona_chat.domain.entity.Persona;
 import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
 import org.springframework.stereotype.Component;
@@ -41,6 +40,7 @@ public class ChatSummaryConverterImpl implements ChatSummaryConverter {
     /**
      * ChatSummaryDto.AnalysisResult를 ChatSummary 엔티티로 변환
      * @param dto ChatSummaryDto.AnalysisResult
+     * @param userPersona 사용자 페르소나 객체
      * @return 변환된 ChatSummary 엔티티
      */
     @Override

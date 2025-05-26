@@ -16,6 +16,4 @@ public interface ChatSummaryRepository extends JpaRepository<ChatSummary, Long> 
     // 특정 UserPersona ID에 대한 가장 최신 채팅 요약 하나를 찾기
     Optional<ChatSummary> findFirstByUserPersonaIdOrderByTimestampDesc(Long userPersonaId);
     
-    // 특정 Persona ID와 연관된 모든 채팅 요약을 타임스탬프 내림차순으로 반환
-    List<ChatSummary> findByUserPersona_Persona_IdOrderByTimestampDesc(Long personaId);
 }
