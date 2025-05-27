@@ -19,22 +19,19 @@ public class S3Service {
     /**
      * S3에 저장된 프로필 이미지의 URL을 생성합니다.
      *
-     * @param imageName 이미지 파일명 (예: "profile1.jpg")
+     * @param imagePath 이미지 경로 (예: "profiles/D/Male/D_Male_20.jpg")
      * @return 이미지의 URL
      */
-    public String getProfileImageUrl(String imageName) {
-        // 프로필 이미지는 profiles 폴더에 저장되어 있다고 가정
-        String key = imageName;
-        
-        // 이미지가 존재하는지 확인 (선택적)
-        if (!amazonS3.doesObjectExist(bucketName, key)) {
-            log.warn("프로필 이미지가 존재하지 않습니다: {}", key);
-            // 기본 이미지 URL 반환 또는 예외 처리
+    public String getProfileImageUrl(String imagePath) {
+        // 이미지가 존재하는지 확인
+        if (!amazonS3.doesObjectExist(bucketName, imagePath)) {
+            log.warn("프로필 이미지가 존재하지 않습니다: {}", imagePath);
+            // 기본 이미지 URL 반환
             return getDefaultProfileImageUrl();
         }
         
         // S3 객체의 URL 반환
-        return amazonS3.getUrl(bucketName, key).toString();
+        return amazonS3.getUrl(bucketName, imagePath).toString();
     }
     
     /**
@@ -43,6 +40,7 @@ public class S3Service {
      * @return 기본 프로필 이미지 URL
      */
     private String getDefaultProfileImageUrl() {
-        return amazonS3.getUrl(bucketName, "default.jpg").toString();
+        String defaultImagePath = "profiles/default/default.jpg";
+        return amazonS3.getUrl(bucketName, defaultImagePath).toString();
     }
 }

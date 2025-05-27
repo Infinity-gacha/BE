@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.capstone.disc_persona_chat.Enums.DiscType;
+import com.capstone.disc_persona_chat.Enums.Gender;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,10 @@ public class Persona {
 
     private Integer age; // 나이는 선택 사항이므로 nullable
 
-    private String gender; // 성별도 선택 사항이므로 nullable
+    private Gender gender; // 성별도 선택 사항이므로 nullable
+    
+    // 추가: 프로필 이미지 URL 필드
+    private String profileImageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

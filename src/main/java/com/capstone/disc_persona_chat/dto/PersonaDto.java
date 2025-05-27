@@ -1,6 +1,8 @@
 package com.capstone.disc_persona_chat.dto;
 
 import com.capstone.disc_persona_chat.Enums.DiscType;
+import com.capstone.disc_persona_chat.Enums.Gender;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +18,7 @@ public class PersonaDto {
         private DiscType discType; // 페르소나의 DISC 유형
         private String name;       // 페르소나의 이름
         private Integer age;       // 페르소나의 나이 (선택 사항)
-        private String gender;     // 페르소나의 성별 (선택 사항)
+        private Gender gender;     // 페르소나의 성별 (선택 사항)
   
     }
 
@@ -29,7 +31,7 @@ public class PersonaDto {
         private DiscType discType; // 페르소나의 DISC 유형
         private String name;       // 페르소나의 이름
         private Integer age;       // 페르소나의 나이
-        private String gender;     // 페르소나의 성별
+        private Gender gender;     // 페르소나의 성별
 
     }
 }

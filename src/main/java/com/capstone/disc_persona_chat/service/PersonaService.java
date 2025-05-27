@@ -11,7 +11,9 @@ import com.capstone.disc_persona_chat.repository.PersonaRepository;
 import com.capstone.disc_persona_chat.repository.UserPersonaRepository;
 import com.capstone.disc_persona_chat.repository.UserRepository;
 import com.capstone.disc_persona_chat.converter.PersonaConverter;
+import com.capstone.disc_persona_chat.Enums.Gender;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -23,12 +25,14 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Slf4j
 public class PersonaService {
 
     private final PersonaRepository personaRepository;
     private final UserRepository userRepository;
     private final PersonaConverter personaConverter;
     private final UserPersonaRepository userPersonaRepository;
+    private final PersonaProfileImageService personaProfileImageService; // 추가: 프로필 이미지 서비스
 
     /**
      * 현재 로그인한 사용자를 위한 새 페르소나를 생성하고 저장
@@ -52,6 +56,24 @@ public class PersonaService {
                 .gender(request.getGender())
                 .user(user) // 중요: user 필드 명시적으로 설정
                 .build();
+
+        // 추가: DISC 유형과 성별에 따라 프로필 이미지 URL 자동 할당
+        try {
+            // 프로필 이미지 URL 가져오기 (Gender enum 타입 그대로 사용)
+            String profileImageUrl = personaProfileImageService.getPersonaProfileImageUrl(
+                    request.getDiscType(), 
+                    request.getGender(), // Gender enum 타입 그대로 전달
+                    request.getAge()
+            );
+            
+            // 페르소나에 프로필 이미지 URL 설정
+            persona.setProfileImageUrl(profileImageUrl);
+            log.info("페르소나 {} 생성 시 프로필 이미지 URL 설정: {}", persona.getName(), profileImageUrl);
+        } catch (Exception e) {
+            // 프로필 이미지 할당 중 오류 발생 시 로깅하고 계속 진행
+            log.error("프로필 이미지 할당 중 오류 발생: {}", e.getMessage(), e);
+            // 기본 이미지는 PersonaProfileImageService에서 처리
+        }
 
         Persona savedPersona = personaRepository.save(persona);
         
@@ -149,6 +171,24 @@ public class PersonaService {
 
         // 컨버터를 사용하여 DTO 정보로 엔티티 업데이트
         Persona updatedPersona = personaConverter.updateEntityFromDto(existingPersona, request);
+        
+        // 추가: DISC 유형이나 성별이 변경된 경우 프로필 이미지 URL 업데이트
+        try {
+            // 프로필 이미지 URL 가져오기 (Gender enum 타입 그대로 사용)
+            String profileImageUrl = personaProfileImageService.getPersonaProfileImageUrl(
+                    updatedPersona.getDiscType(), 
+                    updatedPersona.getGender(), // Gender enum 타입 그대로 전달
+                    updatedPersona.getAge()
+            );
+            
+            // 페르소나에 프로필 이미지 URL 설정
+            updatedPersona.setProfileImageUrl(profileImageUrl);
+            log.info("페르소나 {} 업데이트 시 프로필 이미지 URL 설정: {}", updatedPersona.getName(), profileImageUrl);
+        } catch (Exception e) {
+            // 프로필 이미지 할당 중 오류 발생 시 로깅하고 계속 진행
+            log.error("프로필 이미지 업데이트 중 오류 발생: {}", e.getMessage(), e);
+        }
+        
         Persona savedPersona = personaRepository.save(updatedPersona);
         
         // 컨버터를 사용하여 엔티티를 DTO로 변환
