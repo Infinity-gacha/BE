@@ -5,6 +5,9 @@ import dlib
 import numpy as np
 from model import predict_expression
 import time
+import requests
+
+SPRING_URL = "http://localhost:8081/api/emotion"
 
 # 모델 로딩
 face_cascade = cv2.CascadeClassifier('./haarcascade/haarcascade_frontalface_default.xml')

@@ -2,7 +2,20 @@ src/main/resources/application.properties
 target/classes/application.properties
 .vscode/
 
-# 가상환경, 모델 파일
+# Python (Python 캐시 파일)
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtualenv (가상 환경)
 emotion-server/venv/
-*.hdf5
-*.dat
+
+# Model files
+emotion-server/saved_model/*.hdf5
+emotion-server/predictors/*.dat
+
+# MacOS 시스템 파일 (자동 생성)
+.DS_Store
+
+# IDE (ide 관련 설정 파일)
+.idea/
