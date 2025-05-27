@@ -1,3 +1,8 @@
 src/main/resources/application.properties
 target/classes/application.properties
 .vscode/
+
+# 가상환경, 모델 파일
+emotion-server/venv/
+*.hdf5
+*.dat
