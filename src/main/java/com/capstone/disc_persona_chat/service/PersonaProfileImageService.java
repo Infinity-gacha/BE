@@ -48,7 +48,7 @@ public class PersonaProfileImageService {
         
         // 기본 이미지 경로 생성
         String discTypeStr = discType.name();
-        String imagePath = String.format("%s/%s/%s/%s_%s_%s.jpg", 
+        String imagePath = String.format("%s/%s/%s/%s_%s_%s.png", 
                 PROFILE_BASE_PATH, discTypeStr, genderStr, discTypeStr, genderStr, ageGroup);
         
         // 이미지 존재 여부 확인
@@ -61,7 +61,7 @@ public class PersonaProfileImageService {
         String[] alternativeAgeGroups = {"20", "30", "40", "10"};
         for (String altAgeGroup : alternativeAgeGroups) {
             if (!altAgeGroup.equals(ageGroup)) {
-                String altImagePath = String.format("%s/%s/%s/%s_%s_%s.jpg", 
+                String altImagePath = String.format("%s/%s/%s/%s_%s_%s.png", 
                         PROFILE_BASE_PATH, discTypeStr, genderStr, discTypeStr, genderStr, altAgeGroup);
                 
                 if (amazonS3.doesObjectExist(bucketName, altImagePath)) {
@@ -73,7 +73,7 @@ public class PersonaProfileImageService {
         
         // 대체 이미지 시도 (같은 DISC 유형, 다른 성별)
         String alternativeGender = genderStr.equals("Male") ? "Female" : "Male";
-        String altGenderImagePath = String.format("%s/%s/%s/%s_%s_%s.jpg", 
+        String altGenderImagePath = String.format("%s/%s/%s/%s_%s_%s.png", 
                 PROFILE_BASE_PATH, discTypeStr, alternativeGender, discTypeStr, alternativeGender, ageGroup);
         
         if (amazonS3.doesObjectExist(bucketName, altGenderImagePath)) {

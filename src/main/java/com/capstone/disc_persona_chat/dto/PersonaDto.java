@@ -32,7 +32,7 @@ public class PersonaDto {
         private String name;       // 페르소나의 이름
         private Integer age;       // 페르소나의 나이
         private Gender gender;     // 페르소나의 성별
-
+        private String profileImageUrl; // 프로필 이미지 URL 추가
     }
 }
 
