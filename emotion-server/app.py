@@ -30,6 +30,13 @@ while True:
         face_roi = gray[y:y+h, x:x+w]
         face_roi = cv2.resize(face_roi, (64, 64))
         label = predict_expression(face_roi)
+
+        # 감정 결과를 Spring Boot로 전송!
+        try:
+            response = requests.post(SPRING_URL, json={"emotion": label})
+            print(f"[전송됨] 감정: {label}, 응답: {response.status_code}")
+        except Exception as e:
+            print(f"[전송 실패] {e}")
         cv2.putText(frame, label, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
 
     cv2.imshow('Expression Recognition', frame)
