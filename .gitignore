@@ -1,5 +1,5 @@
 src/main/resources/application.properties
-target/classes/application.properties
+target/
 .vscode/
 
 # Python (Python 캐시 파일)

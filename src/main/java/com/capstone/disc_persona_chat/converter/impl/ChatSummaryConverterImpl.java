@@ -2,7 +2,6 @@ package com.capstone.disc_persona_chat.converter.impl;
 
 import com.capstone.disc_persona_chat.converter.ChatSummaryConverter;
 import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
-import com.capstone.disc_persona_chat.domain.entity.Persona;
 import com.capstone.disc_persona_chat.domain.mapping.UserPersona;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
 import org.springframework.stereotype.Component;

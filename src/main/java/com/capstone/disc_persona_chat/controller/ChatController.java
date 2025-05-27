@@ -5,7 +5,6 @@ import com.capstone.disc_persona_chat.dto.ChatMessageDto;
 import com.capstone.disc_persona_chat.dto.ChatSummaryDto;
 import com.capstone.disc_persona_chat.service.ChatService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
