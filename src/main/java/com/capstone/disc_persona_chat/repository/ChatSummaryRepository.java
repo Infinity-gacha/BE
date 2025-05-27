@@ -2,6 +2,9 @@ package com.capstone.disc_persona_chat.repository;
 
 import com.capstone.disc_persona_chat.domain.entity.ChatSummary;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +21,9 @@ public interface ChatSummaryRepository extends JpaRepository<ChatSummary, Long> 
     
     // 특정 Persona ID와 연관된 모든 채팅 요약을 타임스탬프 내림차순으로 반환
     List<ChatSummary> findByUserPersona_Persona_IdOrderByTimestampDesc(Long personaId);
+
+    // 페르소나 ID로 관련 ChatSummary 레코드 삭제 (추가)
+    @Modifying
+    @Query("DELETE FROM ChatSummary cs WHERE cs.userPersona.persona.id = :personaId")
+    void deleteByPersonaId(@Param("personaId") Long personaId);
 }

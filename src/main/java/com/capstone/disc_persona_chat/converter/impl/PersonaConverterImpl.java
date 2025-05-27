@@ -20,17 +20,17 @@ public class PersonaConverterImpl implements PersonaConverter {
     @Override
     public PersonaDto.Response toResponseDto(Persona entity) {
         if (entity == null) {
-            return null;
+        return null;
         }
-        
+    
         return PersonaDto.Response.builder()
-                .id(entity.getId())
-                .discType(entity.getDiscType())
-                //.userid(entity.getUser().getId())
-                .name(entity.getName())
-                .age(entity.getAge())
-                .gender(entity.getGender())
-                .build();
+            .id(entity.getId())
+            .discType(entity.getDiscType())
+            .name(entity.getName())
+            .age(entity.getAge())
+            .gender(entity.getGender())
+            .profileImageUrl(entity.getProfileImageUrl()) // 프로필 이미지 URL 변환 추가
+            .build();
     }
     
     /**
