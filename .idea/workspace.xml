@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3ea6b56-04b7-4647-b9cd-4df78be22657" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/emotion-server/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emotion-server/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emotion-server/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emotion-server/saved_model/emotion_detection_model.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/controller/EmotionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/disc_persona_chat/controller/EmotionController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.DiscPersonaChatApplication.executor": "Run",
-    "git-widget-placeholder": "emotion-server",
+    "git-widget-placeholder": "hajin",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/gimhajin/Desktop/Spring/BE",
     "node.js.detected.package.eslint": "true",
@@ -95,6 +90,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/emotion-server/saved_model" />
+      <recent name="$PROJECT_DIR$/emotion-server/predictors" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.capstone.disc_persona_chat.apiPayload.code" />
@@ -141,7 +137,7 @@
       <workItem from="1747888095512" duration="616000" />
       <workItem from="1747974736395" duration="4000" />
       <workItem from="1748060933434" duration="41213000" />
-      <workItem from="1748276699602" duration="3534000" />
+      <workItem from="1748276699602" duration="21572000" />
     </task>
     <servers />
   </component>
