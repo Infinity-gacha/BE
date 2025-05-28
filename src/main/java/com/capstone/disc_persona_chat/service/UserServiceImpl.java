@@ -114,29 +114,42 @@ public class UserServiceImpl implements UserService {
             }
         }
     
-    // 새 Users 객체 생성 및 저장
-    Users updatedUser = Users.builder()
-            .id(user.getId())
-            .name(newName)
-            .email(user.getEmail())
-            .password(newPassword)
-            .gender(newGender)
-            .role(user.getRole())
-            .socialType(user.getSocialType())
-            .build();
-    
-    updatedUser = userRepository.save(updatedUser);
-    
-    // DTO로 변환하여 반환
-    return UserResponseDTO.UserInfoDTO.builder()
-            .id(updatedUser.getId())
-            .name(updatedUser.getName())
-            .email(updatedUser.getEmail())
-            .gender(updatedUser.getGender())
-            .role(updatedUser.getRole())
-            .socialType(updatedUser.getSocialType())
-            .createdAt(updatedUser.getCreatedAt())
-            .build();
-}
+        // 새 Users 객체 생성 및 저장
+        Users updatedUser = Users.builder()
+                .id(user.getId())
+                .name(newName)
+                .email(user.getEmail())
+                .password(newPassword)
+                .gender(newGender)
+                .role(user.getRole())
+                .socialType(user.getSocialType())
+                .build();
+        
+        updatedUser = userRepository.save(updatedUser);
+        
+        // DTO로 변환하여 반환
+        return UserResponseDTO.UserInfoDTO.builder()
+                .id(updatedUser.getId())
+                .name(updatedUser.getName())
+                .email(updatedUser.getEmail())
+                .gender(updatedUser.getGender())
+                .role(updatedUser.getRole())
+                .socialType(updatedUser.getSocialType())
+                .createdAt(updatedUser.getCreatedAt())
+                .build();
+    }
 
+    @Override
+    @Transactional(readOnly = true)
+    public boolean isEmailAvailable(String email) {
+        // 이메일이 존재하지 않으면 true(사용 가능), 존재하면 false(사용 불가) 반환
+        return !userRepository.existsByEmail(email);
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public boolean isNicknameAvailable(String nickname) {
+        // 닉네임이 존재하지 않으면 true(사용 가능), 존재하면 false(사용 불가) 반환
+        return !userRepository.existsByName(nickname);
+    }
 }

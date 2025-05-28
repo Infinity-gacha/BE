@@ -12,6 +12,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/users")
 public class UserRestController {
@@ -57,5 +60,23 @@ public class UserRestController {
         // 현재 사용자 정보 수정
         UserResponseDTO.UserInfoDTO updatedUserInfo = userService.updateUserInfo(currentUserId, request);
         return ApiResponse.onSuccess(updatedUserInfo);
+    }
+
+    @GetMapping("/check-email")
+    @Operation(summary = "이메일 중복 체크 API", description = "회원가입 시 이메일 중복 여부를 확인하는 API입니다.")
+    public ApiResponse<Map<String, Boolean>> checkEmailDuplicate(@RequestParam String email) {
+        boolean isAvailable = userService.isEmailAvailable(email);
+        Map<String, Boolean> result = new HashMap<>();
+        result.put("available", isAvailable);
+        return ApiResponse.onSuccess(result);
+    }
+
+    @GetMapping("/check-nickname")
+    @Operation(summary = "닉네임 중복 체크 API", description = "회원가입 시 닉네임 중복 여부를 확인하는 API입니다.")
+    public ApiResponse<Map<String, Boolean>> checkNicknameDuplicate(@RequestParam String nickname) {
+        boolean isAvailable = userService.isNicknameAvailable(nickname);
+        Map<String, Boolean> result = new HashMap<>();
+        result.put("available", isAvailable);
+        return ApiResponse.onSuccess(result);
     }
 }
