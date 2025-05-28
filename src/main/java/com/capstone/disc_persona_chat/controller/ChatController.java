@@ -33,6 +33,19 @@ public class ChatController {
         return ResponseEntity.ok(aiResponse);
     }
 
+    @PostMapping("/chat/voice")
+    public ResponseEntity<ChatMessageDto.Response> sendVoiceTextMessage(
+            @PathVariable Long personaId,
+            @RequestBody ChatMessageDto.Request request) {
+        Long currentUserId = SecurityUtils.getCurrentUserId();
+
+        // (선택) 음성 기반 메시지라는 플래그를 DTO에 넣을 수도 있음
+        // request.setSource("VOICE");
+
+        ChatMessageDto.Response aiResponse = chatService.processMessageWithUserCheck(personaId, request, currentUserId);
+        return ResponseEntity.ok(aiResponse);
+    }
+
     /**
      * GET /api/personas/{personaId}/chat : 페르소나의 채팅 기록을 검색
      * 현재 로그인한 사용자만 자신의 페르소나에 대한 채팅 기록을 볼 수 있음
