@@ -102,8 +102,8 @@ public class OpenAiIntegrationService {
             ChatCompletionRequest completionRequest = ChatCompletionRequest.builder()
                     .model(CHAT_MODEL)
                     .messages(messages)
-                    .maxTokens(300) // 최대 토큰 수 제한
-                    .temperature(0.7) // 응답 다양성 조절
+                    .maxTokens(100) // 최대 토큰 수 제한
+                    .temperature(0.9) // 응답 다양성 조절
                     .n(1) // 생성할 응답 수
                     .build();
 
@@ -628,7 +628,7 @@ public class OpenAiIntegrationService {
         prompt.append(" 이 태그는 응답의 마지막에 위치해야 하며, 태그 없이 응답을 종료하지 마세요.");
         
         // 감정 선택지 결정 (한글로 변경)
-        String emotionChoices = "차분, 인내, 지지, 친근, 안심, 사려깊음, 중립";
+        String emotionChoices = "기쁨,행복,즐거움,친근,슬픔,우울,실망,화남,분노,짜증,놀람,당황,걱정,불안,공포,중립,평온,차분";
         if (personaJson.has("available_emotions") && personaJson.get("available_emotions").isArray()) {
             StringBuilder emotions = new StringBuilder();
             JsonNode availableEmotions = personaJson.get("available_emotions");
@@ -732,8 +732,7 @@ public class OpenAiIntegrationService {
         
         // 4. 응답 내용에서 감정 단어 검색
         // 감정 단어 목록
-        String[] Emotions = {"행복", "슬픔", "화남", "신남", "차분", "중립", "친근", "지지", 
-                                 "자신감", "열정", "낙관", "인내", "안심", "사려깊음"};
+        String[] Emotions = {"기쁨","행복","즐거움","친근","슬픔","우울","실망","화남","분노","짜증","놀람","당황","걱정","불안","공포","중립","평온","차분"};
         
         // 마지막 문장에서만 감정 단어 검색
         int lastSentenceStart = Math.max(

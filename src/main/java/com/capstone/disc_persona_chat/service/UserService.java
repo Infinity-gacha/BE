@@ -24,4 +24,20 @@ public interface UserService {
      * @return 수정된 사용자 정보 DTO
      */
     UserResponseDTO.UserInfoDTO updateUserInfo(Long userId, UserRequestDTO.UpdateUserDto request);
+    
+    /**
+     * 이메일 중복 체크
+     *
+     * @param email 중복 체크할 이메일
+     * @return 사용 가능한 이메일이면 true, 이미 사용 중이면 false
+     */
+    boolean isEmailAvailable(String email);
+    
+    /**
+     * 닉네임 중복 체크
+     *
+     * @param nickname 중복 체크할 닉네임
+     * @return 사용 가능한 닉네임이면 true, 이미 사용 중이면 false
+     */
+    boolean isNicknameAvailable(String nickname);
 }

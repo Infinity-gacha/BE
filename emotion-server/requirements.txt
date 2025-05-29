@@ -1,6 +1,0 @@
-flask
-dlib
-tensorflow
-opencv-python
-numpy
-keras
