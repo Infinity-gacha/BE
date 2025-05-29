@@ -38,12 +38,7 @@
 ![image](https://github.com/user-attachments/assets/c382fae7-dccd-442d-83e9-d02317c2dd78)
 ![image](https://github.com/user-attachments/assets/bdc727f8-530a-4ae8-8eda-6e0c0a06f331)
 ![image](https://github.com/user-attachments/assets/51e2a718-2d55-4de5-9b85-5cdaa6095d09)
-![image](https://github.com/user-attachments/assets/9e54b1d4-4610-4fbb-9f6d-937cc933bc35)
-![image](https://github.com/user-attachments/assets/0423e667-7293-4b52-81b2-956c896ff40b)
-![image](https://github.com/user-attachments/assets/4fe9b952-b6ef-4425-a8c5-6fa4681b4414)
 ![image](https://github.com/user-attachments/assets/9e186731-4b35-42a0-9735-9b180f00b0e4)
-
-![image](https://github.com/user-attachments/assets/d98905fc-57c1-4b2c-a75d-be53cc90b111)
 
 ## 📹 시연 영상
 
@@ -58,3 +53,14 @@
  3) 박수진: UI 설계 및 개발, 동적 UI 구현
  4) 이채영: UI 설계 및 개발, 동적 UI 구현
  5) 권지용: AI 모델 학습 총괄
+
+## 🪄 기대 효과 🎩
+- 기술적 기대효과
+🤖 실시간 AI 대화: GPT 기반 자연어 처리로 몰입감 있는 대화 경험 제공
+📱 크로스플랫폼: React Native + Spring Boot로 iOS/Android 동시 대응
+🧭 사용자 중심 설계: 직관적인 UI/UX로 누구나 쉽게 상호작용 가능
+
+- 심리적 기대효과
+💬 공감 훈련: 다양한 성향의 AI와의 대화를 통해 공감 능력 향상
+🪞 자기 성찰: 감정 표현 및 정서 조절 훈련으로 내면 성숙 지원
+🌍 사회적 포용: 타인 이해와 협력적 태도 형성에 기여
