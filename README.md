@@ -21,7 +21,7 @@
 
 
 ## 📹 시연 영상
-
+https://youtu.be/fRpYXArJiNk
 
 ##  💻 개발 환경
  - 개발 언어: JavaScript, Java, SQL, JSON
