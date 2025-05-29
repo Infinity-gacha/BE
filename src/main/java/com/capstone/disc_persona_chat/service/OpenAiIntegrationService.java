@@ -102,7 +102,7 @@ public class OpenAiIntegrationService {
             ChatCompletionRequest completionRequest = ChatCompletionRequest.builder()
                     .model(CHAT_MODEL)
                     .messages(messages)
-                    .maxTokens(80) // 최대 토큰 수 제한
+                    .maxTokens(100) // 최대 토큰 수 제한
                     .temperature(0.9) // 응답 다양성 조절
                     .n(1) // 생성할 응답 수
                     .build();
