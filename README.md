@@ -7,21 +7,45 @@
 ![image](https://github.com/user-attachments/assets/a9a9327a-7041-4370-b211-b44df1ef534a)
 
 ## 📆 목차
- 1) [주요 기능](#주요-기능)
+ 1) [주요 기능, UI](#주요-기능)
  2) [작품 내용](#작품-내용)
  3) [시연 영상](#시연-영상)
  4) [개발 환경](#개발-환경)
  5) [팀원 별 업무 분담](#팀원-별-업무-분담)
  6) [기대 효과](#기대-효과)
 
-## ✨ 주요 기능
-
+## ✨ 주요 기능, UI
+ 1. DISC 기반 AI 페르소나 선택: 사용자는 D(주도형), I(사교형), S(안정형), C(신중형) 중 원하는 페르소나를 선택해 대화 시작. 각 페르소나는 DISC 이론을 반영해 다른 말투와 성격과 관심사를 가지고, 사용자는 페르소나의 나이와 성별을 지정할 수 있다. 메시지를 통한 자유로운 주제 전개 가능.
+ 2. 실시간 대화 인터페이스: 사용자가 메시지를 입력하면 GPT 기반 AI가 해당 페르소나에 맞게 응답, 음성 입력 기능 포함 (마이크 버튼)
+ 3. 채팅 요약 및 피드백 기능: 채팅 내용을 저장하고 나중에 확인 가능, 요약 기능을 통해 대화 핵심, 개선점, 팁 등 피드백 제공.
+ 4. 대화 점수 시스템: 각 대화별로 10점 만점의 대화 점수 제공. 피드백과 함께 점수 부여 → 사용자 학습 및 성찰 유도
+ 5. 대화 내역 확인 및 관리: 이전에 나눈 대화를 다시 확인하거나 삭제 가능
+ 6. 7. 직관적인 UX: 하단 탭바를 통해 손쉽게 기능 접근
+   ➕ 새 페르소나 추가 | 👤 채팅창 | 📑 요약/기록
 
 ## 🖼️ 작품 내용
+![image](https://github.com/user-attachments/assets/90b759aa-d04d-4cf0-9a99-737eadc109e3)
+![image](https://github.com/user-attachments/assets/4955d00f-9bce-4033-9aff-7dd14fbe2bdc)
+![image](https://github.com/user-attachments/assets/0073bc1b-8d6b-442c-b415-9c738b000aa0)
+![image](https://github.com/user-attachments/assets/045f0686-4414-4a7a-b21c-e05306fb6803)
+![image](https://github.com/user-attachments/assets/4723fd28-b759-441f-a58f-e0032121e991)
+![image](https://github.com/user-attachments/assets/d485e424-f852-4854-b9e0-53e05ea91c9f)
+![image](https://github.com/user-attachments/assets/a9d4680a-a618-4f69-95e9-0e8ff1e08e91)
+![image](https://github.com/user-attachments/assets/ecff8bd8-a20d-4851-a5ec-5deceda4487e)
+![image](https://github.com/user-attachments/assets/841ec455-64b1-4253-8290-d1818f59c603)
+![image](https://github.com/user-attachments/assets/234ef987-a883-4790-b3d7-7d1520081070)
+![image](https://github.com/user-attachments/assets/010bf029-e636-4840-9edb-881a5a41a491)
+![image](https://github.com/user-attachments/assets/c382fae7-dccd-442d-83e9-d02317c2dd78)
+![image](https://github.com/user-attachments/assets/bdc727f8-530a-4ae8-8eda-6e0c0a06f331)
+![image](https://github.com/user-attachments/assets/51e2a718-2d55-4de5-9b85-5cdaa6095d09)
+![image](https://github.com/user-attachments/assets/9e54b1d4-4610-4fbb-9f6d-937cc933bc35)
+![image](https://github.com/user-attachments/assets/0423e667-7293-4b52-81b2-956c896ff40b)
+![image](https://github.com/user-attachments/assets/4fe9b952-b6ef-4425-a8c5-6fa4681b4414)
+![image](https://github.com/user-attachments/assets/9e186731-4b35-42a0-9735-9b180f00b0e4)
 
+![image](https://github.com/user-attachments/assets/d98905fc-57c1-4b2c-a75d-be53cc90b111)
 
 ## 📹 시연 영상
-
 
 ##  💻 개발 환경
  - 개발 언어: JavaScript, Java, SQL, JSON
@@ -34,7 +58,3 @@
  3) 박수진: UI 설계 및 개발, 동적 UI 구현
  4) 이채영: UI 설계 및 개발, 동적 UI 구현
  5) 권지용: AI 모델 학습 총괄
-
-## 🪄 기대 효과 🎩
- - 기술적 기대 효과: 
- - 심리적 기대 효과: 
