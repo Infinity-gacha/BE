@@ -44,7 +44,7 @@
 ![image](https://github.com/user-attachments/assets/9e186731-4b35-42a0-9735-9b180f00b0e4)
 
 ## 📹 시연 영상
-
+https://youtu.be/fRpYXArJiNk
 ##  💻 개발 환경
  - 개발 언어: JavaScript, Java, SQL, JSON
  - 개발 도구: IntelliJ IDEA, Android Studio, AWS
